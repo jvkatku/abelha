@@ -13,20 +13,36 @@ let val_vidas = new Texto()
 let texto_game_over = new Texto()
 let jogar = true
 
+const som1 = new Audio('assets/sounds/bee.wav')
+const som2 = new Audio('assets/sounds/funk.m4a')
+const som3 = new Audio('assets/sounds/game_over.wav')
+const som4 = new Audio('assets/sounds/spider.mp3')
+const som5 = new Audio('assets/sounds/flower.mp3')
+som1.volume = 1.0
+som1.loop = true
+som2.volume = 1.0
+som3.volume = 1.0
+som4.volume = 1.0
+som5.volume = 1.0
+
 // let spider2 = new Obj(0,0,100,100,'darkorchid')
 
 document.addEventListener('keydown', (event)=>{
     if(event.key === 'a'){
         // console.log('pressionado a tecla "a" ')
-        bee.dir = - 5
+        bee.dir -= 5
     }else if(event.key === 'd'){
         // console.log('pressionado a tecla "d" ')
-        bee.dir = 5
-    }else if(event.key === 's'){
-        console.log('pressionado a tecla "s" ')
-    }else if(event.key === 'w'){
-        console.log('pressionado a tecla "w" ')
+        bee.dir += 5
     }
+    else if(event.key === 'w'){
+        console.log('Pressionando a tecla "w"')
+        bee.dir2 -= 5
+    }else if(event.key === 's'){
+        console.log('Pressionando a tecla "s"')
+        bee.dir2 += 5
+    }
+
 })
 document.addEventListener('keyup', (event)=>{
     if(event.key === 'a'){
@@ -35,16 +51,23 @@ document.addEventListener('keyup', (event)=>{
     }else if(event.key === 'd'){
         // console.log('soltou a tecla "d" ')
         bee.dir = 0
+    }
+    else if(event.key === 'w'){
+        // console.log('Pressionando a tecla "w"')
+        bee.dir2 = 0
     }else if(event.key === 's'){
-        console.log('soltou a tecla "s" ')
-    }else if(event.key === 'w'){
-        console.log('soltou a tecla "w" ')
+        // console.log('Pressionando a tecla "s"')
+        bee.dir2 = 0
     }
 })
 
 function game_over(){
     if(bee.vidas <= 0){
         jogar = false
+        som3.play()
+        som2.pause()
+        som1.pause()
+
     }
 }
 
@@ -52,10 +75,12 @@ function colisao(){
     if(bee.colid(spider)){
         spider.recomeca()
         bee.vidas -=1
+        som4.play()
     }
     if(bee.colid(flor)){
         flor.recomeca()
         bee.pts +=1
+        som5.play()
     }
 }
 
@@ -95,8 +120,9 @@ function main(){
     des.clearRect(0,0,500,700)
     atualiza()
     desenha()
-    
+
 }
+
 
 setInterval(main,10)
 

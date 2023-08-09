@@ -32,11 +32,23 @@ class Obj{
 
 class Bee extends Obj{
     dir = 0
+    dir2 = 0
     pts = 0
     vidas = 3
 
     move(){
         this.x += this.dir
+        this.y += this.dir2
+        if(this.x<= 0){
+            this.x = 0
+        }else if(this.x >= 400){
+            this.x = 400
+        }
+        if(this.y<= 0){
+            this.y = 0
+        }else if(this.y >= 600){
+            this.y = 600
+        }
     }
 
     colid(objeto){
@@ -74,8 +86,9 @@ class Bg extends Obj{
         if(this.y>limit){
             this.y = pos
         }
-        
+
     }
+
 }
 
 class Flor extends Spider{
