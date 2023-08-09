@@ -98,3 +98,6 @@ function main(){
 }
 
 setInterval(main,10)
+
+
+// problemas do homen moderno:
