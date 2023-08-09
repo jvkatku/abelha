@@ -96,4 +96,6 @@ class Texto{
         des.fillStyle = cor
         des.fillText(text,x,y)
     }
+
+    // teste
 }
