@@ -74,6 +74,7 @@ class Bg extends Obj{
         if(this.y>limit){
             this.y = pos
         }
+        
     }
 }
 

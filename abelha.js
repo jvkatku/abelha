@@ -95,6 +95,7 @@ function main(){
     des.clearRect(0,0,500,700)
     atualiza()
     desenha()
+    
 }
 
 setInterval(main,10)
